@@ -5,11 +5,17 @@ import Contact from '../components/Contact';
 
 function Home() {
   return (
-    <div>
+    <div className="min-h-screen bg-gray-50">
       <Hero />
-      <ProductGrid />
-      <About />
-      <Contact />
+      <div className="content-section">
+        <ProductGrid />
+      </div>
+      <div className="content-section bg-white">
+        <About />
+      </div>
+      <div className="content-section">
+        <Contact />
+      </div>
     </div>
   );
 }

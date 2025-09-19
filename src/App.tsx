@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AppProvider } from './context/AppContext';
 import Header from './components/Header';
 import MobileBottomNav from './components/MobileBottomNav';
+import ScrollToTop from './components/ScrollToTop';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import CategoryPage from './pages/CategoryPage';
@@ -22,6 +23,7 @@ function App() {
   return (
     <AppProvider>
       <Router>
+        <ScrollToTop />
         <div className="min-h-screen bg-gray-50">
           <Header />
           <div className="pb-20 md:pb-0">

@@ -123,11 +123,11 @@ export default function Header() {
 
             {/* Actions */}
             <div className="flex items-center space-x-2 md:space-x-4">
-              {/* Mobile Search Button */}
+              {/* Mobile Search Button - Opens mobile menu which has search */}
               <button 
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 className="lg:hidden xl:hidden flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 hover:text-gray-900 transition-colors"
-                title="Search"
+                title="Search & Menu"
               >
                 <Search size={16} />
               </button>
@@ -260,10 +260,10 @@ export default function Header() {
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
         <div className="lg:hidden fixed inset-0 z-50 bg-black bg-opacity-50" onClick={() => setIsMobileMenuOpen(false)}>
-          <div 
-            className="fixed right-0 top-0 h-full w-80 max-w-[85vw] bg-white shadow-xl transform transition-transform duration-300 ease-in-out overflow-y-auto"
-            onClick={(e) => e.stopPropagation()}
-          >
+        <div 
+          className="fixed right-0 top-0 h-full w-80 max-w-[90vw] bg-white shadow-xl transform transition-transform duration-300 ease-in-out overflow-y-auto"
+          onClick={(e) => e.stopPropagation()}
+        >
             {/* Mobile Menu Header */}
             <div className="flex items-center justify-between p-4 border-b border-gray-200">
               <h2 className="text-lg font-semibold text-gray-900">Menu</h2>
