@@ -3,7 +3,6 @@ import { useParams, Link } from 'react-router-dom';
 import { Star, Heart, Share2, ShoppingCart, Check } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { products } from '../data/products';
-import type { Product } from '../types/Product';
 
 function ProductDetail() {
   const { addToCart, addToWishlist, removeFromWishlist, isInWishlist } = useApp();

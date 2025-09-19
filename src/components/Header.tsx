@@ -138,7 +138,7 @@ export default function Header() {
                 className="hidden sm:flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-700 hover:text-gray-900 transition-colors relative"
                 title="Wishlist"
               >
-                <Heart size={16} md:size={18} />
+                <Heart size={16} />
                 {state.wishlistItems.length > 0 && (
                   <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-4 h-4 md:w-5 md:h-5 flex items-center justify-center rounded-full font-medium">
                     {state.wishlistItems.length}

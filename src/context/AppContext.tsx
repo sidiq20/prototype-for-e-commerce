@@ -1,4 +1,5 @@
-import { createContext, useContext, useReducer, ReactNode, useEffect } from 'react';
+import { createContext, useContext, useReducer } from 'react';
+import type { ReactNode } from 'react';
 import type { User, CartItem, WishlistItem, Order } from '../types/User';
 import type { Product } from '../types/Product';
 import { products } from '../data/products';
@@ -199,7 +200,7 @@ interface AppContextType {
   getCartTotal: () => number;
   getCartItemsWithProducts: () => (CartItem & { product: Product })[];
   getWishlistItemsWithProducts: () => (WishlistItem & { product: Product })[];
-  createOrder: (order: Omit<Order, 'id' | 'createdAt' | 'updatedAt'>) => void;
+  createOrder: (order: Omit<Order, 'id' | 'createdAt' | 'updatedAt'>) => Order;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -208,7 +209,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer(appReducer, initialState, loadFromStorage);
 
   // Mock authentication functions (in real app, these would call APIs)
-  const login = async (email: string, password: string): Promise<boolean> => {
+  const login = async (email: string, _password: string): Promise<boolean> => {
     // Simulate API call delay
     await new Promise(resolve => setTimeout(resolve, 1000));
     
@@ -311,6 +312,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     
     dispatch({ type: 'ADD_ORDER', payload: order });
     dispatch({ type: 'CLEAR_CART' });
+    return order;
   };
 
   const value: AppContextType = {

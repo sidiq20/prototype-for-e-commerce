@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
-import { Package, Eye, Truck, MapPin, Calendar, Search, Filter } from 'lucide-react';
+import { Package, Eye, Truck, MapPin, Calendar, Search } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 
 function Orders() {

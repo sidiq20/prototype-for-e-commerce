@@ -1,9 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { Search, Filter, X } from 'lucide-react';
 import ProductCard from '../components/ProductCard';
 import { products, categories, brands } from '../data/products';
-import { Search, Filter, X } from 'lucide-react';
-import type { Product } from '../types/Product';
 
 function SearchPage() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -130,8 +129,10 @@ function SearchPage() {
                     onChange={(e) => setSelectedCategory(e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   >
-                    {categories.map(category => (
-                      <option key={category} value={category}>{category}</option>
+                    {categories.map((category: string) => (
+                      <option key={category} value={category}>
+                        {category}
+                      </option>
                     ))}
                   </select>
                 </div>
@@ -144,8 +145,10 @@ function SearchPage() {
                     onChange={(e) => setSelectedBrand(e.target.value)}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                   >
-                    {brands.map(brand => (
-                      <option key={brand} value={brand}>{brand}</option>
+                    {brands.map((brand: string) => (
+                      <option key={brand} value={brand}>
+                        {brand}
+                      </option>
                     ))}
                   </select>
                 </div>

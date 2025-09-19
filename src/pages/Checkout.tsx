@@ -1,11 +1,10 @@
 import { useState } from 'react';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, Check, CreditCard, Truck, MapPin, Lock, AlertCircle } from 'lucide-react';
+import { Navigate, useNavigate } from 'react-router-dom';
+import { ArrowLeft, ArrowRight, Check, CreditCard, Truck, Lock, AlertCircle } from 'lucide-react';
 import { useApp } from '../context/AppContext';
-import type { Address } from '../types/User';
 
 function Checkout() {
-  const { state, getCartItemsWithProducts, getCartTotal, createOrder, clearCart } = useApp();
+  const { state, getCartItemsWithProducts, getCartTotal, createOrder } = useApp();
   const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState(1);
   const [isProcessing, setIsProcessing] = useState(false);
@@ -100,7 +99,7 @@ function Checkout() {
     // Simulate payment processing
     await new Promise(resolve => setTimeout(resolve, 3000));
 
-    const order = {
+    const orderData = {
       userId: state.user!.id,
       items: cartItems.map(item => ({
         id: Date.now().toString() + Math.random(),
@@ -158,9 +157,9 @@ function Checkout() {
       trackingNumber: 'TRK' + Date.now().toString().slice(-8),
     };
 
-    createOrder(order);
+    const createdOrder = createOrder(orderData);
     setIsProcessing(false);
-    navigate('/order-confirmation', { state: { orderId: order.id } });
+    navigate(`/order-confirmation/${createdOrder.id}`, { replace: true });
   };
 
   const renderShippingStep = () => (

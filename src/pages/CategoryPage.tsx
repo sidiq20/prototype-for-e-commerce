@@ -1,9 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ProductCard from '../components/ProductCard';
 import CategoryHero from '../components/CategoryHero';
-import { products, brands } from '../data/products';
-import type { Product } from '../types/Product';
+import { products } from '../data/products';
 
 function CategoryPage() {
   const { category } = useParams<{ category: string }>();
@@ -41,7 +40,7 @@ function CategoryPage() {
   // Get category-specific brands
   const categoryBrands = ['All', ...Array.from(new Set(categoryProducts.map(p => p.brand)))];
 
-  const categoryTitle = category?.charAt(0).toUpperCase() + category?.slice(1);
+  const categoryTitle = category ? category.charAt(0).toUpperCase() + category.slice(1) : '';
 
   return (
     <div className="min-h-screen bg-gray-50 pt-16 md:pt-20">
